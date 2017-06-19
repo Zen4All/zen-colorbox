@@ -11,26 +11,14 @@
 
 if (ZEN_COLORBOX_STATUS == 'true') {
   require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/jquery_colorbox.php');
-  require_once(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/autoload_default.php');
 ?>
-<script>
-  jQuery(function($) {
-  // Quantity Discounts Available
-  var discountPriceLink = $('a[href*="popupWindowPrice"]');
-  if (discountPriceLink.length != 0) {
-    var discountPriceUrl = discountPriceLink.attr('href').match(/'(.*?)'/)[1];
-    discountPriceLink.attr({
-      'href':'#'
-    }).colorbox({
-      'href':discountPriceUrl,
-      width: '550px',
-      onComplete: function(){
-        $('#cboxLoadedContent').find('a[href*="window.close"]').closest('td').hide();
-      }
-    });
-  }
-});
-
+<script language="javascript" type="text/javascript">
+<?php
+  require(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/autoload_default.php');
+  $anchor = 'a[href*="popupWindowPrice"]';
+  $closenear = 'td';
+  require(DIR_FS_CATALOG . DIR_WS_CLASSES . 'zen_colorbox/display_link.php');
+?>
 </script>
 
-<?php  } ?>
+<?php  }
